@@ -16,7 +16,10 @@ root.render(
   </StrictMode>
 )
 
-// Remove loading class once app is mounted
-setTimeout(() => {
-  rootElement.className = 'loaded'
-}, 0)
+// Remove loading class after styles have been applied
+window.addEventListener('load', () => {
+  // Give a small delay to ensure all styles are computed
+  requestAnimationFrame(() => {
+    rootElement.className = 'loaded'
+  })
+})

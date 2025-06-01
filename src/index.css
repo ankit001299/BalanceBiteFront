@@ -28,6 +28,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Ensure content takes remaining space */
@@ -38,11 +40,14 @@ main {
 /* Prevent FOUC (Flash of Unstyled Content) */
 .loading {
   opacity: 0;
-  transition: opacity 0.3s ease-in;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in, visibility 0.3s ease-in;
 }
 
 .loaded {
   opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease-in, visibility 0.3s ease-in;
 }
 
 /* Ensure proper loading of lazy-loaded components */
@@ -52,12 +57,15 @@ main {
   justify-content: center;
   align-items: center;
   background: var(--light-color);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Ensure proper loading of images */
 img {
   max-width: 100%;
   height: auto;
+  opacity: 1 !important;
 }
 
 /* Basic responsive container */
@@ -66,23 +74,28 @@ img {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  visibility: visible !important;
 }
 
 /* Basic animations for transitions */
 .fade-enter {
   opacity: 0;
+  visibility: hidden;
 }
 
 .fade-enter-active {
   opacity: 1;
-  transition: opacity 300ms ease-in;
+  visibility: visible;
+  transition: opacity 300ms ease-in, visibility 300ms ease-in;
 }
 
 .fade-exit {
   opacity: 1;
+  visibility: visible;
 }
 
 .fade-exit-active {
   opacity: 0;
-  transition: opacity 300ms ease-in;
+  visibility: hidden;
+  transition: opacity 300ms ease-in, visibility 300ms ease-in;
 }
