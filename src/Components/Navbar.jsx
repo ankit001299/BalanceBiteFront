@@ -8,34 +8,54 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Check if token exists in localStorage and set isLoggedIn state accordingly
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("Token in localStorage:", token); // Debugging step
     setIsLoggedIn(!!token);
   }, [location]);
 
-  console.log("isLoggedIn state:", isLoggedIn); // Debugging step
+  useEffect(() => {
+    // Close mobile menu when route changes
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Add event listener for window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     setIsMobileMenuOpen(false);
-    navigate("/"); // Redirect to home after logout
+    navigate("/");
   };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : 'visible';
   };
 
   const handleNavLinkClick = () => {
     setIsMobileMenuOpen(false);
+    document.body.style.overflow = 'visible';
   };
 
   return (
     <nav className="navbar">
       <div className="logo">BalanceBite</div>
-      <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
+      <button 
+        className="mobile-menu-btn" 
+        onClick={toggleMobileMenu}
+        aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+      >
         {isMobileMenuOpen ? "✕" : "☰"}
       </button>
       <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
@@ -48,7 +68,7 @@ const Navbar = () => {
           <>
             <li><Link to="/Profile" className="profile-btn" onClick={handleNavLinkClick}>View Profile</Link></li>
             <li>
-              <button onClick={handleLogout} className="logout-button">
+              <button onClick={() => { handleLogout(); handleNavLinkClick(); }} className="logout-button">
                 Logout
               </button>
             </li>

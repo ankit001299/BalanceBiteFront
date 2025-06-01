@@ -1,17 +1,14 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../css/home.css";
 import scoop from "../images/scoop.jpg";
-import Navbar from "../Components/Navbar"; // ✅ Imported Navbar
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
   const navigate = useNavigate();
 
-  // ✅ Detect login/logout changes
   useEffect(() => {
     const handleStorageChange = () => {
       setIsLoggedIn(!!localStorage.getItem("token"));
@@ -23,7 +20,6 @@ const Home = () => {
     };
   }, []);
 
-  // ✅ Logout with toast & navigate after toast closes
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
@@ -36,18 +32,12 @@ const Home = () => {
 
   return (
     <div className="homepage">
-      {/* ✅ Toast Notifications */}
       <ToastContainer position="top-right" autoClose={2000} />
 
-      {/* ✅ Header Section */}
       <header
         className="header"
         style={{ background: `url(${scoop}) no-repeat center center/cover` }}
       >
-        {/* ✅ Replaced hardcoded nav with imported Navbar */}
-        <Navbar />
-
-        {/* ✅ Header Content */}
         <div className="header-content">
           <h1>Welcome to BalanceBite</h1>
           <p>
@@ -55,14 +45,12 @@ const Home = () => {
             recipes, personalized meal plans, and expert advice—all in one place.
           </p>
 
-          {/* ✅ Conditionally navigate to macro or signup */}
           <Link to={isLoggedIn ? "/macro" : "/signup"} className="btn">
             Get Started
           </Link>
         </div>
       </header>
 
-      {/* ✅ Footer Section */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-logo">
