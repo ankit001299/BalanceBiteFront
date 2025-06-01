@@ -11,6 +11,7 @@ const LoadingFallback = () => (
   </div>
 );
 
+//Chukturungrurung
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
