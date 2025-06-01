@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../css/home.css";
 import scoop from "../images/scoop.jpg";
-import Navbar from "../components/Navbar"; // ✅ Imported Navbar
+import Navbar from "../Components/Navbar"; // ✅ Imported Navbar
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
