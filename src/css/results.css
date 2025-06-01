@@ -97,3 +97,88 @@
   transform: scale(1.05);
   box-shadow: 0 3px 10px rgba(255, 69, 0, 0.5);
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .results-container {
+    margin: 2rem 1rem;
+    padding: 1rem;
+  }
+
+  .results-container h1 {
+    font-size: 1.75rem;
+  }
+
+  .result-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .result-card li {
+    font-size: 1rem;
+    padding: 0.75rem 0;
+  }
+
+  .back-btn,
+  .create-meal-btn {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .create-meal-btn {
+    margin-top: 1rem;
+  }
+
+  /* Disable hover effects on mobile */
+  .back-btn:hover,
+  .create-meal-btn:hover {
+    transform: none;
+  }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .results-container {
+    margin: 3rem auto;
+    max-width: 500px;
+  }
+
+  .back-btn,
+  .create-meal-btn {
+    padding: 12px 24px;
+  }
+}
+
+/* Ensure buttons are touch-friendly */
+@media (hover: none) {
+  .back-btn,
+  .create-meal-btn {
+    min-height: 44px;
+  }
+
+  /* Active state for touch devices */
+  .back-btn:active,
+  .create-meal-btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Dark mode optimization */
+@media (prefers-color-scheme: dark) {
+  .results-container {
+    background: linear-gradient(135deg, #121212, #1e2839);
+  }
+
+  .result-card {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .back-btn {
+    background: #1565c0;
+  }
+
+  .back-btn:hover {
+    background: #0d47a1;
+  }
+}

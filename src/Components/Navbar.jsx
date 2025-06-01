@@ -1,54 +1,10 @@
-// import { Link, useNavigate, useLocation } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import "../css/navbar.css";
-
-// const Navbar = () => {
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
-//   const navigate = useNavigate();
-//   const location = useLocation();
-
-//   // Watch for token changes or page navigation
-//   useEffect(() => {
-//     const token = localStorage.getItem("token");
-//     setIsLoggedIn(!!token); // sets true if token exists
-//   }, [location]);
-
-//   const handleLogout = () => {
-//     localStorage.removeItem("token");
-//     setIsLoggedIn(false);
-//     navigate("/"); // redirect to home after logout
-//   };
-
-//   return (
-//     <nav className="navbar">
-//       <div className="logo">BalanceBite</div>
-//       <ul className="nav-links">
-//         <li><Link to="/">Home</Link></li>
-//         <li><Link to="/macro">Calculate Macros</Link></li>
-//         <li><Link to="/shop">Shop</Link></li>
-//         <li><Link to="/about">About Us</Link></li>
-
-//         {isLoggedIn ? (
-//           <li>
-//             <button onClick={handleLogout} className="logout-button">
-//               Logout
-//             </button>
-//           </li>
-//         ) : (
-//           <li><Link to="/login">Login</Link></li>
-//         )}
-//       </ul>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../css/navbar.css";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -64,21 +20,33 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    setIsMobileMenuOpen(false);
     navigate("/"); // Redirect to home after logout
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleNavLinkClick = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <nav className="navbar">
       <div className="logo">BalanceBite</div>
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/macro">Calculate Macros</Link></li>
-        <li><Link to="/shop">Shop</Link></li>
-        <li><Link to="/about">About Us</Link></li>
+      <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
+        {isMobileMenuOpen ? "✕" : "☰"}
+      </button>
+      <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
+        <li><Link to="/" onClick={handleNavLinkClick}>Home</Link></li>
+        <li><Link to="/macro" onClick={handleNavLinkClick}>Calculate Macros</Link></li>
+        <li><Link to="/shop" onClick={handleNavLinkClick}>Shop</Link></li>
+        <li><Link to="/about" onClick={handleNavLinkClick}>About Us</Link></li>
 
         {isLoggedIn ? (
           <>
-            <li><Link to="/Profile" className="profile-btn">View Profile</Link></li>
+            <li><Link to="/Profile" className="profile-btn" onClick={handleNavLinkClick}>View Profile</Link></li>
             <li>
               <button onClick={handleLogout} className="logout-button">
                 Logout
@@ -86,7 +54,7 @@ const Navbar = () => {
             </li>
           </>
         ) : (
-          <li><Link to="/login" className="login-btn">Login</Link></li>
+          <li><Link to="/login" className="login-btn" onClick={handleNavLinkClick}>Login</Link></li>
         )}
       </ul>
     </nav>

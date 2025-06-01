@@ -103,3 +103,92 @@ body {
 .result li {
   margin: 0.5rem 0;
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .calculator-container {
+    margin: 1rem;
+    padding: 1rem;
+    width: auto;
+  }
+
+  .goal-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .goal-selection button {
+    margin: 0;
+    width: 100%;
+    padding: 12px;
+  }
+
+  .input-group input,
+  .input-group select {
+    font-size: 16px; /* Prevents zoom on mobile */
+    padding: 12px;
+  }
+
+  .calculate-btn {
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .calculator-container {
+    max-width: 600px;
+    margin: 2rem auto;
+  }
+
+  .goal-selection {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .goal-selection button {
+    flex: 1;
+    white-space: nowrap;
+  }
+}
+
+/* Ensure form elements are touch-friendly */
+@media (hover: none) {
+  .input-group select,
+  .input-group input,
+  .goal-selection button,
+  .calculate-btn {
+    min-height: 44px; /* Minimum touch target size */
+  }
+
+  .input-group select {
+    background-position: right 8px center;
+    padding-right: 30px;
+  }
+}
+
+/* Dark mode optimization */
+@media (prefers-color-scheme: dark) {
+  .calculator-container {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .input-group input,
+  .input-group select {
+    background: #333;
+    color: #fff;
+    border-color: #555;
+  }
+
+  .goal-selection button {
+    background: #444;
+    color: #fff;
+  }
+
+  .goal-selection button.active {
+    background: #2e7d32;
+  }
+}
