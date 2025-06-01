@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./Components/CartContext";
 import "./index.css";
 
 // Loading component with proper styling
@@ -35,41 +36,43 @@ function App() {
   const AdminProtect = lazy(() => import("./Components/Admin/PrivateAdminRoute"));
 
   return (
-    <div className={`app-container ${isLoaded ? 'loaded' : 'loading'}`}>
-      <BrowserRouter>
-        <Suspense fallback={<LoadingFallback />}>
-          <Routes>
-            <Route path="results" element={<Results />} />
-            <Route path="/" element={<Home />} />
-            <Route path="macro" element={<MacroCalculator />} />
-            <Route path="meal-generator" element={<MealGenerator />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="shop" element={<HealthcareStore />} />
-            <Route path="store-cart" element={<CartPage />} />
-            <Route path="about" element={<About />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="login" element={<Login />} />
+    <CartProvider>
+      <div className={`app-container ${isLoaded ? 'loaded' : 'loading'}`}>
+        <BrowserRouter>
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              <Route path="results" element={<Results />} />
+              <Route path="/" element={<Home />} />
+              <Route path="macro" element={<MacroCalculator />} />
+              <Route path="meal-generator" element={<MealGenerator />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="shop" element={<HealthcareStore />} />
+              <Route path="store-cart" element={<CartPage />} />
+              <Route path="about" element={<About />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="login" element={<Login />} />
 
-            {/* Admin protected */}
-            <Route 
-              path="/admin" 
-              element={
-                <AdminProtect>
-                  <Admin />
-                </AdminProtect>
-              } 
-            />
+              {/* Admin protected */}
+              <Route 
+                path="/admin" 
+                element={
+                  <AdminProtect>
+                    <Admin />
+                  </AdminProtect>
+                } 
+              />
 
-            {/* Admin login/signup public */}
-            <Route path="/admin/signup" element={<AdminSignup />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
+              {/* Admin login/signup public */}
+              <Route path="/admin/signup" element={<AdminSignup />} />
+              <Route path="/admin/login" element={<AdminLogin />} />
 
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </div>
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </div>
+    </CartProvider>
   );
 }
 
