@@ -85,7 +85,7 @@ console.log("🔐 Token being sent:", token);
           // Add console log to check selectedMeals and request body
           console.log("Selected Meals:", selectedMeals);
   
-          await fetch("http://localhost:5000/api/orders/save", {
+          await fetch("https://balancebiteback-1.onrender.com/api/orders/save", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

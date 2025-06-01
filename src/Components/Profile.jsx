@@ -110,7 +110,7 @@ const Profile = () => {
         throw new Error("Token not found in localStorage");
       }
 
-      const res = await fetch("http://localhost:5000/api/orders/my-orders", {
+      const res = await fetch("https://balancebiteback-1.onrender.com/api/orders/my-orders", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
