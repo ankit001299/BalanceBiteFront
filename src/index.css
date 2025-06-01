@@ -1,0 +1,88 @@
+/* Global styles */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Preload critical styles */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure content takes remaining space */
+main {
+  flex: 1;
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+.loading {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.loaded {
+  opacity: 1;
+}
+
+/* Ensure proper loading of lazy-loaded components */
+.suspense-container {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--light-color);
+}
+
+/* Ensure proper loading of images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Basic responsive container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Basic animations for transitions */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}

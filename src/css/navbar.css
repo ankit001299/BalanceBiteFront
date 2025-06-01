@@ -1,0 +1,45 @@
+.navbar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #222; /* Optional: Slightly darken the navbar background */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ddd; /* Slightly darker shade */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #ddd; /* Darker than pure white for a softer effect */
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #c68400; /* Darker orange for better visibility */
+}
+/* Logout Button */
+.logout-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .logout-button:hover {
+    color: #ccc;
+  }
+  

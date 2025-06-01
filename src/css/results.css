@@ -1,0 +1,99 @@
+/* General Page Styling */
+.results-container {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1e1e1e, #2c3e50); /* Dark gradient background */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #79cccc;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Header Styling */
+.results-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #4caf50; /* Highlight color */
+}
+
+/* Result Card */
+.result-card {
+  background: rgba(255, 255, 255, 0.1); /* Slight transparency */
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.result-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffcc00; /* Golden highlight */
+}
+
+/* Macro List Styling */
+.result-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.result-card li {
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.result-card li:last-child {
+  border-bottom: none;
+}
+
+/* Back Button */
+.back-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: #2196f3;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #1976d2;
+  transform: scale(1.05);
+}
+
+/* Create Meal Planner Button */
+.create-meal-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff8c00, #ff3d00); /* Vibrant gradient */
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 99, 71, 0.4);
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.create-meal-btn:hover {
+  background: linear-gradient(135deg, #ff3d00, #ff8c00); /* Reverse gradient on hover */
+  transform: scale(1.1); /* Slight zoom effect */
+  box-shadow: 0 8px 20px rgba(255, 69, 0, 0.6);
+}
+
+.create-meal-btn:active {
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(255, 69, 0, 0.5);
+}

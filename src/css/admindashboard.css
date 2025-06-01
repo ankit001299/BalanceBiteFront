@@ -1,0 +1,67 @@
+/* Navbar */
+.admin-navbar {
+    background-color: #222;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .admin-nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .admin-nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .admin-nav-links li a:hover {
+    color: #00cba9;
+  }
+  
+  /* Main Content */
+  .admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .admin-content {
+    flex: 1;
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #f8f9fa;
+  }
+  
+  .admin-content h1 {
+    font-size: 3rem;
+    color: #222;
+    margin-bottom: 1rem;
+  }
+  
+  .admin-content p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Footer */
+  .admin-footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+  }
+  
