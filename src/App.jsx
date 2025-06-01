@@ -29,11 +29,7 @@ function App() {
   const About = lazy(() => import("./Components/About"));
   const SignUp = lazy(() => import("./Components/SignUp"));
   const Login = lazy(() => import("./Components/Login"));
-  const Admin = lazy(() => import("./Components/Admin/Adminhome"));
   const Profile = lazy(() => import("./Components/Profile"));
-  const AdminLogin = lazy(() => import("./Components/Admin/AdminLogin"));
-  const AdminSignup = lazy(() => import("./Components/Admin/AdminSignup"));
-  const AdminProtect = lazy(() => import("./Components/Admin/PrivateAdminRoute"));
 
   return (
     <CartProvider>
@@ -52,21 +48,6 @@ function App() {
               <Route path="about" element={<About />} />
               <Route path="signup" element={<SignUp />} />
               <Route path="login" element={<Login />} />
-
-              {/* Admin protected */}
-              <Route 
-                path="/admin" 
-                element={
-                  <AdminProtect>
-                    <Admin />
-                  </AdminProtect>
-                } 
-              />
-
-              {/* Admin login/signup public */}
-              <Route path="/admin/signup" element={<AdminSignup />} />
-              <Route path="/admin/login" element={<AdminLogin />} />
-
               <Route path="/profile" element={<Profile />} />
             </Routes>
           </Suspense>
